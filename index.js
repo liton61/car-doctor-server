@@ -25,16 +25,16 @@ async function run() {
     try {
         await client.connect();
 
-        // const serviceCollection = client.db('carDoctor').collection('services');
+        const serviceCollection = client.db('carDoctor').collection('services');
         // const bookingCollection = client.db('carDoctor').collection('booking');
         const usersCollection = client.db('carDoctor').collection('users');
 
         // get method for services
-        // app.get('/services', async (req, res) => {
-        //     const service = serviceCollection.find();
-        //     const result = await service.toArray();
-        //     res.send(result);
-        // })
+        app.get('/services', async (req, res) => {
+            const service = serviceCollection.find();
+            const result = await service.toArray();
+            res.send(result);
+        })
 
         // to get specific data from database
         // app.get('/services/:id', async (req, res) => {
@@ -141,9 +141,9 @@ run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
-    res.send('Server is running !')
+    res.send('Car server is running !')
 })
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
+    console.log(`Car server is running on port ${port}`)
 })
